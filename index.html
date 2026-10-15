@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>2026 冬季健檢專案（Q4）｜主管月會 · 院長版</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   慈愛動物醫院 · 2026 冬季健檢專案（Q4）主管月會 院長版
+   每個分頁：上方為結果，下方為邏輯與細節
+   ========================================================= */
+:root{
+  --paper:#F6F8F3; --paper-2:#E9F0E6; --surface:#FFFFFF; --surface-2:#FBFDF9;
+  --ink:#20312A; --ink-soft:#5E7266; --ink-faint:#92A398;
+  --green:#1F5134; --green-deep:#143A25; --green-mid:#3F7D55; --green-soft:#8FB89C; --green-wash:#DCEBE0;
+  --gold:#B88A2B; --gold-soft:#E4C98A; --gold-wash:#FAF2E0;
+  --clay:#B5542F; --clay-wash:#FBEDE6;
+  --line:#D8E4D7; --line-soft:#EAF1E8;
+  --shadow:0 1px 2px rgba(31,81,52,.05), 0 10px 30px rgba(31,81,52,.07);
+  --serif:"Noto Serif TC","Songti TC",serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --data:"Calibri","Segoe UI",var(--sans);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:var(--paper);font-family:var(--sans);
+  font-size:16.5px;line-height:1.78;-webkit-font-smoothing:antialiased;letter-spacing:.01em}
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+
+/* ---------- 頂部 ---------- */
+.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;background:rgba(250,251,248,.95);
+  backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)}
+.site::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--green-deep) 0%,var(--green-mid) 42%,var(--gold) 100%)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:rgba(250,251,248,.95);z-index:70}
+.bar{display:flex;align-items:center;gap:16px;padding:12px 22px;max-width:1200px;margin:0 auto;flex-wrap:wrap}
+.mark{display:flex;align-items:baseline;gap:12px;flex-shrink:0}
+.mark .wm{font-family:var(--serif);font-weight:700;font-size:18px;color:var(--green-deep);letter-spacing:.08em;white-space:nowrap}
+.mark .rule{width:1px;height:16px;background:var(--gold-soft);align-self:center}
+.mark .ttl{font-size:13.5px;color:var(--ink-soft);letter-spacing:.04em;white-space:nowrap}
+.tabs{margin-left:auto;display:flex;gap:3px;flex-wrap:wrap}
+.tabs button{font:inherit;font-size:14.5px;font-weight:500;cursor:pointer;color:var(--ink-soft);
+  background:none;border:0;padding:7px 14px;border-radius:999px;transition:background .15s,color .15s}
+.tabs button:hover{background:var(--paper-2);color:var(--green-deep)}
+.tabs button[aria-selected="true"]{background:var(--green);color:#fff;box-shadow:0 2px 10px rgba(31,81,52,.22)}
+.tabs button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* ---------- 分頁 ---------- */
+.panel{display:none;padding:34px 0 72px;animation:fade .22s ease}
+.panel.on{display:block}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.panel{animation:none}}
+
+.phead{padding:6px 0 18px;margin-bottom:26px;position:relative}
+.phead::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--line)}
+.phead::before{content:"";position:absolute;left:0;bottom:0;width:72px;height:3px;background:var(--gold);z-index:1}
+.phead h1{font-family:var(--serif);font-weight:700;font-size:31px;color:var(--green-deep);margin:0 0 9px;line-height:1.34;letter-spacing:.02em}
+.phead p{margin:0;color:var(--ink-soft);font-size:15px;max-width:66ch;line-height:1.85}
+
+/* 結果／細節分界 */
+.seg{display:flex;align-items:center;gap:14px;margin:34px 0 20px}
+.seg span{font-family:var(--serif);font-size:16px;color:var(--green-deep);letter-spacing:.1em;white-space:nowrap}
+.seg::after{content:"";flex:1;height:1px;background:var(--line)}
+.seg.detail span{color:var(--ink-faint)}
+
+.block{background:var(--surface);border:1px solid var(--line-soft);border-radius:18px;
+  padding:26px 28px 28px;margin-bottom:20px;box-shadow:var(--shadow)}
+.block.tint{background:var(--surface-2)}
+.block.result{border:1px solid var(--green-soft);box-shadow:0 2px 8px rgba(31,81,52,.08),0 18px 40px rgba(31,81,52,.08)}
+h2{font-family:var(--serif);font-weight:700;font-size:20px;color:var(--green-deep);margin:0 0 10px;
+  letter-spacing:.02em;position:relative;padding-left:14px}
+h2::before{content:"";position:absolute;left:0;top:.56em;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+h3{font-size:15.5px;font-weight:700;color:var(--green);margin:24px 0 8px}
+p{margin:0 0 13px}
+.lede{color:var(--ink-soft);font-size:14.5px;margin:0 0 18px;max-width:74ch}
+ul{margin:0 0 12px;padding-left:20px}
+li{margin-bottom:6px}
+b,strong{font-weight:700;color:var(--green-deep)}
+
+/* 重點數字 */
+.keyrow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.key{background:var(--surface);border:1px solid var(--line-soft);border-radius:16px;padding:17px 19px;box-shadow:var(--shadow)}
+.key .lb{font-size:13px;color:var(--ink-soft);margin-bottom:3px}
+.key .vl{font-family:var(--serif);font-weight:700;font-size:26px;color:var(--green-deep);line-height:1.2;font-variant-numeric:tabular-nums}
+.key .vl small{font-size:13.5px;font-family:var(--sans);font-weight:500;color:var(--ink-soft);margin-left:3px}
+.key .ft{font-size:12.5px;color:var(--ink-faint);margin-top:4px;line-height:1.6}
+
+/* 表格 */
+.tbl{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:520px}
+caption{caption-side:bottom;text-align:left;color:var(--ink-faint);font-size:12.5px;padding-top:10px;line-height:1.65}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line-soft);text-align:left;vertical-align:top}
+thead th{color:var(--green);font-weight:700;font-size:13px;letter-spacing:.05em;border-bottom:1.5px solid var(--green-soft)}
+tbody tr:hover{background:var(--surface-2)}
+td.n,th.n{text-align:right;font-family:var(--data);font-variant-numeric:tabular-nums;white-space:nowrap}
+th .sub,td .sub{display:block;font-weight:400;font-size:11.5px;color:var(--ink-faint);letter-spacing:0;line-height:1.5;margin-top:2px}
+th.hl{background:var(--gold-wash);border-bottom-color:var(--gold);color:#8A6515}
+td.hl{background:var(--gold-wash)}
+tr.sum td{background:var(--gold-wash);font-weight:700;border-top:1.5px solid var(--gold-soft)}
+.price{font-family:var(--serif);font-weight:700;color:var(--green);font-size:16.5px}
+.money{font-family:var(--data);font-weight:700;font-variant-numeric:tabular-nums;color:var(--green-deep)}
+
+/* 標籤與提示 */
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:5px;white-space:nowrap}
+.tag.new{background:var(--gold-wash);color:#8A6515}
+.tag.keep{background:var(--green-wash);color:var(--green-deep)}
+.tag.off{background:var(--clay-wash);color:var(--clay)}
+.note{border-left:3px solid var(--gold);background:var(--gold-wash);border-radius:0 10px 10px 0;padding:13px 18px;margin:16px 0;font-size:14.5px;line-height:1.75}
+.note.alert{border-left-color:var(--clay);background:var(--clay-wash)}
+.note.calm{border-left-color:var(--green-mid);background:var(--green-wash)}
+.note p:last-child{margin-bottom:0}
+
+/* 條列式結論 */
+.flow{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:16px 0 6px}
+.flow .step{padding:14px 19px;border-bottom:1px solid var(--line-soft);display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+.flow .step:last-child{border-bottom:0}
+.flow .step .t{font-weight:700;color:var(--green-deep);min-width:112px}
+.flow .step .d{color:var(--ink-soft);font-size:14.5px;flex:1;min-width:220px}
+.flow .doc{background:var(--green-wash)}
+.flow .team{background:var(--gold-wash)}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{border:1px solid var(--line);border-radius:14px;padding:17px 19px;background:var(--surface)}
+.card h5{margin:0 0 8px;font-size:15px;color:var(--green-deep);font-weight:700}
+.card ul{margin:0;padding-left:18px;font-size:14.5px}
+
+.check{list-style:none;padding:0;margin:0}
+.check li{padding-left:27px;position:relative;margin-bottom:8px;font-size:15px}
+.check li::before{content:"";position:absolute;left:0;top:.48em;width:13px;height:13px;border:1.5px solid var(--green-soft);border-radius:3px}
+
+/* 流程圖 */
+.diawrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:8px 0 4px}
+.dia{display:block;width:100%;min-width:680px;height:auto}
+.dia text{font-family:var(--sans)}
+.dia .t{font-weight:700;fill:var(--green-deep);font-size:14.5px}
+.dia .s{font-size:12.5px;fill:var(--ink-soft)}
+.dia .m{font-size:13.5px;font-weight:700;fill:var(--green-deep);font-family:var(--data)}
+.dia .lb{font-size:12.5px;fill:var(--ink-faint)}
+.dia .bx{fill:var(--surface);stroke:var(--line);stroke-width:1.3}
+.dia .bx.g{fill:var(--green-wash);stroke:var(--green-soft)}
+.dia .bx.y{fill:var(--gold-wash);stroke:var(--gold-soft)}
+.dia .bx.c{fill:var(--clay-wash);stroke:#E3B9A7}
+.dia .ar{stroke:#8FB89C;stroke-width:1.7;fill:none}
+
+footer{padding:24px 0 48px;border-top:1px solid var(--line);color:var(--ink-faint);font-size:13px;line-height:1.8}
+
+@media (max-width:860px){
+  .keyrow{grid-template-columns:repeat(2,1fr)}
+  .two{grid-template-columns:1fr}
+  .phead h1{font-size:25px}
+  .bar{padding:10px 14px}
+  .tabs{width:100%;overflow-x:auto;flex-wrap:nowrap}
+}
+@media print{
+  .site{display:none}
+  .panel{display:block!important;break-before:page}
+  body{background:#fff;font-size:12pt}
+  .block{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="bar">
+    <div class="mark">
+      <span class="wm">慈愛動物醫院</span><span class="rule"></span>
+      <span class="ttl">2026 冬季健檢專案（Q4）· 主管月會</span>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-p="p1">總覽</button>
+      <button role="tab" aria-selected="false" data-p="p2">方案與規則</button>
+      <button role="tab" aria-selected="false" data-p="p3">加購項目</button>
+      <button role="tab" aria-selected="false" data-p="p4">情境認定</button>
+      <button role="tab" aria-selected="false" data-p="p5">目標設定</button>
+      <button role="tab" aria-selected="false" data-p="p6">獎金制度</button>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ================= 總覽 ================= -->
+<section class="panel on" id="p1">
+  <div class="phead">
+    <h1>Q4 健檢專案　總覽</h1>
+    <p>檔期 2026/10/16 – 2027/01/15，共 92 天。方案內容與價格維持不變，本季調整集中在三處：新增 C 癌症篩檢套組、目標改以各院實際健檢滲透率設定、獎金分配比例明定於辦法中。</p>
+  </div>
+
+  <div class="seg"><span>結果</span></div>
+
+  <div class="keyrow" style="margin-bottom:20px">
+    <div class="key"><div class="lb">檔期天數</div><div class="vl">92<small>天</small></div><div class="ft">10/16 開檔，1/15 結算</div></div>
+    <div class="key"><div class="lb">分院合計目標</div><div class="vl">362<small>件</small></div><div class="ft">較 Q3 實際 +9%</div></div>
+    <div class="key"><div class="lb">每件方案獎金</div><div class="vl">200<small>／400／500</small></div><div class="ft">A／B／C，額度同 Q3</div></div>
+    <div class="key"><div class="lb">獎金分配</div><div class="vl">70<small>／30</small></div><div class="ft">醫師／助理暨櫃檯</div></div>
+  </div>
+
+  <div class="block result">
+    <h2>本季異動一覽</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>項目</th><th>Q3</th><th>Q4</th><th>狀態</th></tr></thead>
+        <tbody>
+          <tr><td>A／B 方案內容與價格</td><td>—</td><td>完全不變</td><td><span class="tag keep">不變</span></td></tr>
+          <tr><td>癌症篩檢</td><td>無此項目</td><td>新增 C 套組，B 核心＋癌篩 $2,500</td><td><span class="tag new">新增</span></td></tr>
+          <tr><td>獎金分配</td><td>由院長自主統籌，比例不透明</td><td>明定醫師 70%／助理暨櫃檯 30%；競賽獎金由院長自由分配</td><td><span class="tag new">新增</span></td></tr>
+          <tr><td>目標設定</td><td>全體統一轉換率 2.5%</td><td>各院自身實際滲透率 ×1.1、保底 2.5%，合計 362 件</td><td><span class="tag new">調整</span></td></tr>
+          <tr><td>總院</td><td>無目標、無追蹤基準</td><td>新增院級參考線（不綁獎金）</td><td><span class="tag new">新增</span></td></tr>
+          <tr><td>驅蟲商品加購</td><td>同品項兩件 8 折＋訂閱制</td><td>自健檢方案移除，改由商品部門獨立執行</td><td><span class="tag off">移除</span></td></tr>
+          <tr><td>情境認定</td><td>併於方案規則中</td><td>判準明文化，標準情境與四類搭配情境獨立成章</td><td><span class="tag new">調整</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="seg detail"><span>細節</span></div>
+
+  <div class="block">
+    <h2>參加院所與分組</h2>
+    <p>分組原則延續 Q3：分院與曼哈頓採團體目標制，三間總院採個人業績制。</p>
+    <div class="two">
+      <div class="card">
+        <h5>分院＋曼哈頓（10 院）· 團體目標</h5>
+        <ul>
+          <li>苗栗縣府、北屯、中華、曼哈頓、仁德、高雄、九如、大灣、西門院、彰化中山</li>
+          <li>曼哈頓套用北部價格與 Chem15，其餘九院套用中南部價格與 Chem17</li>
+          <li>達成目標 100% 後解鎖按件計酬</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h5>總院（3 院）· 個人業績制</h5>
+        <ul>
+          <li>台北總院、台中總院、台南總院</li>
+          <li>不設團體目標、不參加團體競賽</li>
+          <li>按件計酬自第 1 件起算、無門檻；台北總院套用北部價格</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:14px;color:var(--ink-faint);font-size:14px">嘉義西區已停業，本季不列入；金華院更名為西門院，為同一院所。</p>
+  </div>
+
+  <div class="block tint">
+    <h2>Q3 成效速覽</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>項目</th><th class="n">數值</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td>合格案件</td><td class="n"><b>377 件</b></td><td>分院 331／總院 45／嘉義西區 1，統計至 2026/10/11</td></tr>
+          <tr><td>分院達成率</td><td class="n"><b>150%</b></td><td>目標 221 件，十院中九院達標</td></tr>
+          <tr><td>分院實際滲透率</td><td class="n"><b>3.93%</b></td><td>277 件 ÷ 7,044 人次（2026/7/15–9/27）</td></tr>
+          <tr><td>來客數變化<br><span style="color:var(--ink-faint);font-size:13px">2026/7/15–9/27 對比去年同期</span></td><td class="n"><b>−5.6%</b></td><td>高雄 −20.9%、中華 −19.8%、北屯 −12.9%；苗栗縣府 +21.5%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note calm">
+      <p><b>兩個結論。</b>一、各院實際滲透率普遍在 3.93% 上下，與 Q3 設定目標時採用的 2.5% 有明顯落差，因此本季改以各院的實際成績為計算基礎。二、在整體來客減少 5.6% 的情況下仍做出 3.93% 的滲透率，表示現場推廣確實有效，本季要做的是把這個成果延續下去。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 方案與規則 ================= -->
+<section class="panel" id="p2">
+  <div class="phead">
+    <h1>方案與規則</h1>
+    <p>核心精神延續「1＋N」：飼主選方案，獸醫師依個體狀況決定加什麼。A、B 方案本季完全不動，新增 C 癌症篩檢套組（僅犬適用）。</p>
+  </div>
+
+  <div class="seg"><span>結果</span></div>
+
+  <div class="block result">
+    <h2>三個核心方案與價格</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>方案</th><th>內容</th><th class="n">北部<br>台北總院／曼哈頓</th><th class="n">中南部<br>其餘 9 院</th><th>狀態</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>A 基礎方案</b><br><span style="color:var(--ink-faint);font-size:13px">6 歲以下／第一次健檢</span></td>
+            <td>理學＋CBC＋Chem10＋電解質 Lyte4</td>
+            <td class="n"><span class="price">$2,300</span></td><td class="n"><span class="price">$1,950</span></td>
+            <td><span class="tag keep">不變</span></td>
+          </tr>
+          <tr>
+            <td><b>B 進階方案</b><br><span style="color:var(--ink-faint);font-size:13px">熟齡／老年犬貓</span></td>
+            <td>A 內容升級為 Chem15（北）／Chem17（中南），另含檢驗自選一項</td>
+            <td class="n"><span class="price">$3,950</span></td><td class="n"><span class="price">$3,750</span></td>
+            <td><span class="tag keep">不變</span></td>
+          </tr>
+          <tr>
+            <td><b>C 癌症篩檢套組</b><br><span style="color:var(--ink-faint);font-size:13px">7 歲以上犬隻／4 歲以上高風險品種</span></td>
+            <td>B 核心＋IDEXX Cancer Dx 犬淋巴瘤篩檢（檢體外送美國）</td>
+            <td class="n"><span class="price">$6,450</span></td><td class="n"><span class="price">$6,250</span></td>
+            <td><span class="tag new">新增</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <caption>核心方案為固定套組價，不因檢驗自選項目而改變。C 方案僅犬適用，癌篩段加價 $2,500。</caption>
+    </div>
+  </div>
+
+  <div class="seg detail"><span>細節</span></div>
+
+  <div class="block">
+    <h2>方案內容對照</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>核心內容</th><th>A 基礎方案</th><th>B 進階方案</th><th>C 癌症篩檢套組</th></tr></thead>
+        <tbody>
+          <tr><td>理學檢查</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td>血液學 CBC</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td>電解質 Lyte4</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td>生化檢查</td><td>Chem10</td><td>Chem15（北）／Chem17（中南）</td><td>同 B 方案</td></tr>
+          <tr><td>檢驗自選（含 1 項）</td><td>—</td><td>✓ 五項擇一</td><td>✓ 犬用四項擇一</td></tr>
+          <tr><td>癌症篩檢（外送美國）</td><td>—</td><td>—</td><td>✓ IDEXX Cancer Dx</td></tr>
+        </tbody>
+      </table>
+      <caption>檢驗自選五項：犬 4 合 1 傳染病快篩、貓 3 合 1 傳染病快篩、TT4（甲狀腺）、proBNP（心臟）、SDMA（早期腎臟）。僅能擇一，屬方案內含、不另計價。C 方案的核心血檢與 B 方案完全相同，差別只在多疊上癌症篩檢段。</caption>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>適用範圍與基本規則</h2>
+    <div class="two">
+      <div class="card">
+        <h5>適用</h5>
+        <ul>
+          <li>不分年齡、犬貓全面適用（C 方案限犬）</li>
+          <li>參加院所全數同步實施</li>
+          <li>核心方案為固定套組價，不因自選項目而異動</li>
+          <li>加購優惠限同日、同次、同一筆結帳完成</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h5>不適用</h5>
+        <ul>
+          <li>不得與其他折扣、折價券、員工價、異業優惠就同一項目重複使用</li>
+          <li>不可分次執行、不可回溯合併計算</li>
+          <li>後續異常之追蹤與治療費用另計</li>
+          <li>經評估需鎮靜／麻醉者，費用另計</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:14px"><b>執行前告知義務：</b>執行加購前務必提供「加購明細與預估費用」，經飼主確認後再執行。</p>
+  </div>
+
+  <div class="block">
+    <h2>C 癌症篩檢套組｜現場執行須知</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>項目</th><th>內容</th></tr></thead>
+        <tbody>
+          <tr><td>品項與代碼</td><td>IDEXX Cancer Dx™ Test — Canine（檢驗代碼 9020）</td></tr>
+          <tr><td>適用對象</td><td><b>僅犬適用。</b>7 歲以上所有犬隻；4 歲以上高風險品種（黃金獵犬、法國鬥牛犬、拉布拉多、羅威納、拳師犬、伯恩山犬、平毛尋回犬、蘇格蘭㹴等）</td></tr>
+          <tr><td>檢體</td><td>血清 2 mL（最少 0.5–1 mL）＋ EDTA 抗凝全血 1 mL（最少 0.5 mL），須同日同次採集；可與 B 方案核心血檢同次採集，不需另行抽血</td></tr>
+          <tr><td>保存</td><td>2–8°C 冷藏，可保存 7 天。<b>嚴禁冷凍</b>，亦不可送交曾冷凍過之檢體</td></tr>
+          <tr><td>可採樣日</td><td><b>週六、週日、週一全天，以及週二上午</b></td></tr>
+          <tr><td>報告時間</td><td>約 5 個工作天回覆</td></tr>
+          <tr><td>獎金</td><td>每件 $500，計入達標件數，與 A、B 合併計算</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note alert">
+      <p><b>預約時直接以「週六、日、一全天，週二上午」為可約時段，不需讓櫃檯或醫師自行推算送件日。</b>IDEXX 僅週一、週二收件：週一收件者週二飛美國、週二收件者週三飛美國，須於採樣後 7 天內完成檢驗。週三、週四採樣須等下週一才能送件，屆時已超過時效、檢體將作廢；週五採樣本季不開放。</p>
+      <p><b>開單時務必於收費前告知飼主：報告約 5 個工作天後回覆，當日不會有結果。</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 加購項目 ================= -->
+<section class="panel" id="p3">
+  <div class="phead">
+    <h1>加購項目</h1>
+    <p>N 的規則。本季唯一異動是移除驅蟲商品加購，其餘維持。方案外的檢驗項目一律適用 85 折，這點過去未寫清楚，本季於辦法中補齊。</p>
+  </div>
+
+  <div class="seg"><span>結果</span></div>
+
+  <div class="block result">
+    <h2>加購項目一覽</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>加購項目</th><th>優惠</th><th>限制</th><th>狀態</th></tr></thead>
+        <tbody>
+          <tr><td><b>方案外血檢</b><br><span style="color:var(--ink-faint);font-size:13px">五選一中未被選中者、其他生化與內分泌等</span></td><td>85 折</td><td>同日同次完成；方案內含項目不得重複計價</td><td><span class="tag keep">維持</span></td></tr>
+          <tr><td><b>其他院內檢驗</b><br><span style="color:var(--ink-faint);font-size:13px">尿檢、糞檢、血壓等</span></td><td>85 折</td><td>同日同次完成</td><td><span class="tag keep">維持</span></td></tr>
+          <tr><td><b>影像學檢查</b><br><span style="color:var(--ink-faint);font-size:13px">X 光、超音波（心臟／腹腔）</span></td><td>85 折</td><td>同日同次完成</td><td><span class="tag keep">維持</span></td></tr>
+          <tr><td><b>預防針</b></td><td>85 折</td><td>健檢當日加購；一次施打一劑以上者其餘依原價。可當日施打或領券日後核銷</td><td><span class="tag keep">維持</span></td></tr>
+          <tr><td><b>洗牙方案</b></td><td>標準收費、不折扣</td><td>須全身麻醉下執行；限非嚴重疾病之病患，以牙科健檢為優先目的</td><td><span class="tag keep">維持</span></td></tr>
+          <tr><td><b>驅蟲商品加購</b></td><td>原同品項兩件 8 折</td><td>—</td><td><span class="tag off">本季移除</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <p><b>本季請特別宣達：</b>Q3 現場最常見的狀況是 B 方案五選一只能選一項，但醫師判斷另外一項也該做。有些院照原價收、有些自行給了折扣，造成收費不一致。本季明確規定：<b>方案外的檢驗項目一律適用 85 折</b>，包含未被選中的自選項目。</p>
+    </div>
+  </div>
+
+  <div class="seg detail"><span>細節</span></div>
+
+  <div class="block">
+    <h2>85 折的適用與排除</h2>
+    <div class="two">
+      <div class="card">
+        <h5>適用 85 折</h5>
+        <ul>
+          <li><b>方案外血檢</b>：五選一中未被選中者，及其他生化、內分泌、凝血等院內血檢</li>
+          <li><b>其他院內檢驗</b>：尿液、糞便、血壓等</li>
+          <li><b>影像學</b>：X 光、超音波（心臟／腹腔）</li>
+          <li><b>預防針</b>：健檢當日加購</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h5>不適用優惠價</h5>
+        <ul>
+          <li><b>外送檢驗</b>：細菌培養、病理切片等（C 方案之癌症篩檢屬方案內含、依明訂售價計價，不受此限）</li>
+          <li><b>藥品與治療</b>：藥品、處置治療、耗材與醫療用品</li>
+          <li><b>活動範圍外</b>：麻醉、手術、住院、急診加成</li>
+          <li><b>重複計價</b>：方案內含項目不得另行加購計價</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:14px"><b>共同適用規則：</b>加購一律限<b>同日、同次、同一筆結帳</b>完成，「同日同次」係指開單與結帳之時點；不可分次執行、不可回溯合併計算。不得與其他折扣、折價券、員工價就同一項目重複使用；不同品項之優惠得併行（例如以會員卡權益施打疫苗、同次以健檢方案進行血檢）。</p>
+    <p><b>移除驅蟲加購的理由：</b>Q3 三項新措施中以驅蟲折扣成效最差；且醫療端（NX）與商品端分屬不同結帳系統，現場負擔高、稽核困難。本季自健檢方案移除，連同寄生蟲預防訂閱制一併退出，改由商品部門獨立執行。</p>
+  </div>
+
+  <div class="block">
+    <h2>牙科健檢方案</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>體重級距</th><th class="n">洗牙＋麻醉（含麻醉、全院一價）</th></tr></thead>
+        <tbody>
+          <tr><td>≤ 10kg</td><td class="n">$3,600</td></tr>
+          <tr><td>10–20kg</td><td class="n">$4,600</td></tr>
+          <tr><td>&gt; 20kg（大型犬）</td><td class="n">$6,000 起<br><span style="color:var(--ink-faint);font-size:12.5px">20–25kg $6,000／25–30kg $7,000／30–35kg $8,000</span></td></tr>
+        </tbody>
+      </table>
+      <caption>麻醉超時每 30 分 +$500；高風險（ASA III 以上）術前評估與費用另計。同一次麻醉下加做影像檢查適用 85 折。拔牙、牙周治療等治療項目另行報價、不套折扣，獎金比照健檢按件發放並計入達成率。</caption>
+    </div>
+    <p><b>本季明文規定限制條件：限非嚴重疾病之病患。</b>本方案的定位是牙科健檢與預防，不是口腔疾病的治療管道。已確診嚴重口腔疾病而需以治療為主要目的者，應依一般醫療流程處置，不適用健檢方案價與獎金計算。</p>
+  </div>
+
+  <div class="block tint">
+    <h2>Q3 最常見的開單錯誤</h2>
+    <p class="lede">以下問題與情境認定無關，不影響案件是否計入，但直接造成營收短收或飼主權益受損。請納入院內教育訓練，並於結帳前三方檢核（醫師、助理、櫃檯）時逐項確認。</p>
+    <ul class="check">
+      <li>未提供 85 折加購價</li>
+      <li>未點選疫苗加購</li>
+      <li>方案內含項目重複收費</li>
+      <li>B 方案五選一未開單</li>
+      <li>每個項目都打 8 折（方案核心為固定套組價，加購才是 85 折）</li>
+      <li>漏收掛號費</li>
+      <li>未於病歷備註欄填寫本次情境別</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= 情境認定 ================= -->
+<section class="panel" id="p4">
+  <div class="phead">
+    <h1>情境認定</h1>
+    <p>哪些案件算得上「健檢」。這條規則同時決定三件事：飼主能不能用方案價、這筆案件算不算進該院達標件數、以及獎金怎麼計。</p>
+  </div>
+
+  <div class="seg"><span>結果</span></div>
+
+  <div class="block result">
+    <h2>判準與可計入的五種情境</h2>
+    <div class="note calm">
+      <p><b>判準不是「有沒有症狀」，而是這次血檢的目的。</b>為了做全面的健康評估而開立 → 屬預防醫學，<b>計入</b>；為了查明某個特定問題而開立 → 屬診斷行為，本來就會做，不是推廣出來的增量，<b>不計入</b>。</p>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>情境</th><th>可計入的條件</th><th>排除</th></tr></thead>
+        <tbody>
+          <tr><td><b>一、標準情境</b><br><span style="color:var(--ink-faint);font-size:13px">一般健康動物之健康檢查</span></td><td>無臨床問題需要處理，飼主為預防醫學目的主動安排。不分年齡、犬貓皆適用，不需搭配其他就診事由。收編、認養、中途、購入後首次到院建立健康基準數據者，比照本情境認定。</td><td>—</td></tr>
+          <tr><td><b>二、疫苗</b></td><td>回院施打疫苗時，額外加做完整健檢者。反之，回院健檢的同時可用 85 折加購疫苗。</td><td>僅施打疫苗、未加做血檢者</td></tr>
+          <tr><td><b>三、結紮</b></td><td>健康動物結紮術前之健檢。</td><td>有既有疾病、不適主訴之術前評估</td></tr>
+          <tr><td><b>四、皮膚病</b></td><td>皮膚問題就診時，經醫師推廣、飼主額外加做完整健檢者。</td><td>診斷該皮膚問題所必需的最低檢查（皮屑鏡檢、黴菌培養等）</td></tr>
+          <tr><td><b>五、洗牙</b></td><td>洗牙就診時搭配完整健檢者，核心血檢兼作麻醉前評估。</td><td>僅做洗牙未搭配核心方案；已確診嚴重口腔疾病而以治療為主要目的者</td></tr>
+        </tbody>
+      </table>
+      <caption>情境二至五中，「額外」係指超出該就診目的本身所必需的最低檢查範圍。</caption>
+    </div>
+  </div>
+
+  <div class="block result">
+    <h2>不計入的情境</h2>
+    <p>① 疾病就診時，為鑑別診斷而開立之血檢；② 既有疾病回診時，為監測療效或疾病指標而開立之血檢；③ 上述五種情境以外的其他就診情境。</p>
+    <p>經稽核判定為非健檢情境者，不計入達標件數與獎勵權重，<b>惟營收照實入帳</b>——醫療行為本身沒有問題，只是不適用活動折扣與獎金。</p>
+    <div class="note">
+      <p><b>現場請做一件事：於病歷備註欄填寫本次情境別（健檢／疫苗／結紮／皮膚病／洗牙）。</b>有註記，稽核即可逕行認定，爭議案件也能回頭釐清。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 目標設定 ================= -->
+<section class="panel" id="p5">
+  <div class="phead">
+    <h1>目標設定</h1>
+    <p>本季目標改以各院自身的實際健檢滲透率設定，不再採全體統一轉換率。各院的目標都是從自己 Q3 的實際成績推算而來。</p>
+  </div>
+
+  <div class="seg"><span>結果</span></div>
+
+  <div class="block result">
+    <h2>各院 Q4 目標</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>院別</th><th class="n">Q3 目標<br><span class="sub">2026/7/15–10/15 檔期</span></th><th class="n">Q3 實際件數<br><span class="sub">2026/7/15–10/11</span></th><th class="n">Q3 達成率</th><th class="n hl">Q4 目標<br><span class="sub">2026/10/16–2027/1/15</span></th><th class="n">vs Q3 實際</th></tr></thead>
+        <tbody>
+          <tr><td>北屯</td><td class="n">20</td><td class="n">43</td><td class="n">215%</td><td class="n hl"><b>49</b></td><td class="n">+14%</td></tr>
+          <tr><td>仁德</td><td class="n">23</td><td class="n">42</td><td class="n">183%</td><td class="n hl"><b>48</b></td><td class="n">+14%</td></tr>
+          <tr><td>曼哈頓</td><td class="n">25</td><td class="n">43</td><td class="n">172%</td><td class="n hl"><b>48</b></td><td class="n">+12%</td></tr>
+          <tr><td>中華</td><td class="n">27</td><td class="n">43</td><td class="n">159%</td><td class="n hl"><b>43</b></td><td class="n">±0%</td></tr>
+          <tr><td>大灣</td><td class="n">14</td><td class="n">22</td><td class="n">157%</td><td class="n hl"><b>22</b></td><td class="n">±0%</td></tr>
+          <tr><td>苗栗縣府</td><td class="n">35</td><td class="n">52</td><td class="n">149%</td><td class="n hl"><b>50</b></td><td class="n">−4%</td></tr>
+          <tr><td>高雄</td><td class="n">23</td><td class="n">32</td><td class="n">139%</td><td class="n hl"><b>39</b></td><td class="n">+22%</td></tr>
+          <tr><td>九如</td><td class="n">22</td><td class="n">24</td><td class="n">109%</td><td class="n hl"><b>28</b></td><td class="n">+17%</td></tr>
+          <tr><td>西門院</td><td class="n">22</td><td class="n">23</td><td class="n">105%</td><td class="n hl"><b>25</b></td><td class="n">+9%</td></tr>
+          <tr><td>彰化中山</td><td class="n">10</td><td class="n">7</td><td class="n">70%</td><td class="n hl"><b>10</b></td><td class="n">+43%</td></tr>
+          <tr class="sum"><td>合計</td><td class="n">221</td><td class="n">331</td><td class="n">150%</td><td class="n hl">362</td><td class="n">+9%</td></tr>
+        </tbody>
+      </table>
+      <caption>Q3 實際件數統計至 2026/10/11（89／93 天），為季末結算前數字；Q3 目標已扣除嘉義西區。苗栗縣府之 Q4 目標 50 件為管理裁示調整值，其餘院所依公式計算。</caption>
+    </div>
+    <div class="note calm">
+      <p><b>請不要拿「Q3 目標 221」直接比「Q4 目標 362」。</b>兩者計算邏輯不同——Q3 目標是「去年來客數 × 固定 2.5%」，門檻偏寬、實際做到 150%；Q4 目標是「各院自己已經做到的滲透率 ×1.1」。該拿來比較的是各院自己的實際件數，以此基準全體增幅為 +9%，其中中華、大灣的 Q4 目標與 Q3 實際持平。</p>
+    </div>
+  </div>
+
+  <div class="block result">
+    <h2>總院院級參考線（不綁獎金）</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>院別</th><th class="n">合格件數<br><span class="sub">2026/7/15–9/27</span></th><th class="n">實際滲透率<br><span class="sub">2026/7/15–9/27</span></th><th class="n hl">Q4 參考線<br><span class="sub">2026/10/16–2027/1/15</span></th></tr></thead>
+        <tbody>
+          <tr><td>台北總院</td><td class="n">23</td><td class="n">1.07%</td><td class="n hl"><b>31</b></td></tr>
+          <tr><td>台中總院</td><td class="n">8</td><td class="n">0.27%</td><td class="n hl"><b>20</b></td></tr>
+          <tr><td>台南總院</td><td class="n">6</td><td class="n">0.23%</td><td class="n hl"><b>17</b></td></tr>
+          <tr class="sum"><td>合計</td><td class="n">37</td><td class="n">0.48%</td><td class="n hl">68</td></tr>
+        </tbody>
+      </table>
+      <caption>參考線不設團體目標、不綁獎金、不影響個人計酬，僅作為季與季之間的管理追蹤基準。總院病患組成偏重疾病與急重症，滲透率天然低於分院，不與分院放在同一標準上比較。</caption>
+    </div>
+  </div>
+
+  <div class="seg detail"><span>細節</span></div>
+
+  <div class="block">
+    <h2>目標是怎麼算出來的</h2>
+    <p class="lede">一句話：<b>以各院自己已經做到的成績為基準，往上加一成。</b>滲透率 ＝ 健檢件數 ÷ 來客數（總病歷數）。</p>
+    <div class="diawrap">
+      <svg class="dia" viewBox="0 0 880 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="目標計算流程：各院實際滲透率 ×1.1 × Q4推估來客數 = 目標件數">
+        <defs><marker id="ah1" markerWidth="9" markerHeight="8" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4 z" fill="#8FB89C"/></marker></defs>
+        <rect class="bx" x="8" y="14" width="192" height="100" rx="13"/>
+        <text class="t" x="104" y="46" text-anchor="middle">各院實際滲透率</text>
+        <text class="s" x="104" y="70" text-anchor="middle">2026/7/15–9/27 實際資料</text>
+        <text class="s" x="104" y="90" text-anchor="middle">分院 3.93%（1.72%–7.02%）</text>
+
+        <line class="ar" x1="204" y1="64" x2="226" y2="64" marker-end="url(#ah1)"/>
+
+        <rect class="bx g" x="232" y="14" width="192" height="100" rx="13"/>
+        <text class="t" x="328" y="46" text-anchor="middle">× 1.1　＝ 目標滲透率</text>
+        <text class="s" x="328" y="70" text-anchor="middle">在自己的實際成績上加一成</text>
+        <text class="s" x="328" y="90" text-anchor="middle">乘完仍不到 2.5% 者，以 2.5% 計</text>
+
+        <line class="ar" x1="428" y1="64" x2="450" y2="64" marker-end="url(#ah1)"/>
+
+        <rect class="bx" x="456" y="14" width="192" height="100" rx="13"/>
+        <text class="t" x="552" y="46" text-anchor="middle">× Q4 推估來客數</text>
+        <text class="s" x="552" y="70" text-anchor="middle">2026/7/15–9/27 日均來客</text>
+        <text class="s" x="552" y="90" text-anchor="middle">× 季節係數 × 92 天</text>
+
+        <line class="ar" x1="652" y1="64" x2="674" y2="64" marker-end="url(#ah1)"/>
+
+        <rect class="bx y" x="680" y="14" width="192" height="100" rx="13"/>
+        <text class="t" x="776" y="46" text-anchor="middle">＝ Q4 目標件數</text>
+        <text class="s" x="776" y="70" text-anchor="middle">無條件進位</text>
+        <text class="s" x="776" y="90" text-anchor="middle">最低 10 件</text>
+      </svg>
+    </div>
+    <p style="color:var(--ink-faint);font-size:13.5px;margin-top:6px">所採用的資料期間：各院實際滲透率與日均來客數取 2026/7/15–9/27（75 天），Q4 檔期為 2026/10/16–2027/1/15（92 天），三段期間天數不同，全部先換算成日均再推估。Q3 的算法是「去年來客數 × 全體統一 2.5%」，各院實際滲透率落在 1.72%–7.02%、差距 4.1 倍，同一個比率難以同時適用，因此本季改以各院自己的實際成績為基準。</p>
+    <div class="note">
+      <p><b>兩點請院長向院內說明：</b></p>
+      <p>一、<b>苗栗縣府目標 50 件。</b>該院同期間來客數較去年成長 21.5%，依公式計算應為 75 件，經管理裁示調整為 50 件，與其 Q3 實際 52 件相當。</p>
+      <p>二、<b>彰化中山 +43% 不是門檻變高。</b>該院是唯一未達 Q3 目標者（7／10），Q4 仍以保底 2.5% 計算、維持 10 件不變，增幅是相對於偏低的實際件數而產生。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 獎金制度 ================= -->
+<section class="panel" id="p6">
+  <div class="phead">
+    <h1>獎金制度</h1>
+    <p>每件獎金額度維持 Q3 不變。本季唯一的制度變更是：院內分配比例不再由各院自行決定，改於辦法中明定醫師 70%、助理暨櫃檯 30%。</p>
+  </div>
+
+  <div class="seg"><span>結果</span></div>
+
+  <div class="block result">
+    <h2>每件獎金與分配比例</h2>
+    <p class="lede">本專案有<b>兩種獎金</b>：<b>① 方案獎金</b>——每完成一件按件計酬，依 A／B／C 給付；<b>② 團體競賽獎金</b>——達標院所之間依達成率排名的名次獎。兩者分開計算、同時發放。</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>方案</th><th class="n">每件方案獎金</th><th class="n">醫師 70%</th><th class="n">助理＋櫃檯 30%</th></tr></thead>
+        <tbody>
+          <tr><td>A 基礎方案</td><td class="n"><b>$200</b></td><td class="n">$140</td><td class="n">$60</td></tr>
+          <tr><td>B 進階方案</td><td class="n"><b>$400</b></td><td class="n">$280</td><td class="n">$120</td></tr>
+          <tr><td>C 癌症篩檢套組</td><td class="n"><b>$500</b></td><td class="n">$350</td><td class="n">$150</td></tr>
+        </tbody>
+      </table>
+      <caption>A、B 額度同 Q3；C 為本季新增品項，額度依「獎金佔單件毛利比對齊 B」推導而得。</caption>
+    </div>
+    <h3 style="margin-top:26px">兩種獎金怎麼跑到人身上</h3>
+    <div class="diawrap">
+      <svg class="dia" viewBox="0 0 880 524" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="獎金流程：完成案件、達標後解鎖按件計酬、醫師70%與團隊30%、結算發放">
+        <defs><marker id="ah2" markerWidth="9" markerHeight="8" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4 z" fill="#8FB89C"/></marker></defs>
+
+        <rect class="bx" x="300" y="8" width="280" height="48" rx="13"/>
+        <text class="t" x="440" y="38" text-anchor="middle">完成一筆健檢案件（A／B／C）</text>
+        <line class="ar" x1="440" y1="56" x2="440" y2="82" marker-end="url(#ah2)"/>
+
+        <polygon class="bx" points="440,88 592,132 440,176 288,132"/>
+        <text class="t" x="440" y="128" text-anchor="middle">該院達成目標 100%？</text>
+        <text class="s" x="440" y="148" text-anchor="middle">A／B／C 件數合併計算</text>
+
+        <line class="ar" x1="288" y1="132" x2="190" y2="132" marker-end="url(#ah2)"/>
+        <text class="lb" x="236" y="122" text-anchor="middle">否</text>
+        <rect class="bx c" x="10" y="104" width="172" height="58" rx="13"/>
+        <text class="t" x="96" y="130" text-anchor="middle">不發方案獎金</text>
+        <text class="s" x="96" y="150" text-anchor="middle">營收照常入帳</text>
+
+        <line class="ar" x1="440" y1="176" x2="440" y2="202" marker-end="url(#ah2)"/>
+        <text class="lb" x="456" y="194">是</text>
+
+        <text class="lb" x="270" y="200" style="font-weight:700;fill:#8A6515">① 方案獎金　按件計酬</text>
+        <rect class="bx g" x="270" y="208" width="340" height="60" rx="13"/>
+        <text class="t" x="440" y="234" text-anchor="middle">解鎖按件計酬・無上限</text>
+        <text class="m" x="440" y="256" text-anchor="middle">A $200　B $400　C $500</text>
+
+        <path class="ar" d="M440,268 L440,292 M310,292 L590,292 M310,292 L310,310" marker-end="url(#ah2)"/>
+        <line class="ar" x1="590" y1="292" x2="590" y2="310" marker-end="url(#ah2)"/>
+
+        <rect class="bx g" x="180" y="316" width="260" height="82" rx="13"/>
+        <text class="t" x="310" y="344" text-anchor="middle">醫師 70%</text>
+        <text class="s" x="310" y="364" text-anchor="middle">歸該筆案件的執行醫師個人</text>
+        <text class="m" x="310" y="386" text-anchor="middle">A $140　B $280　C $350</text>
+
+        <rect class="bx y" x="460" y="316" width="260" height="82" rx="13"/>
+        <text class="t" x="590" y="344" text-anchor="middle">助理＋櫃檯 30%</text>
+        <text class="s" x="590" y="364" text-anchor="middle">入院級池，院長自由分配</text>
+        <text class="m" x="590" y="386" text-anchor="middle">A $60　B $120　C $150</text>
+
+        <path class="ar" d="M310,398 L310,424 M590,398 L590,424 M310,424 L590,424 M450,424 L450,448" marker-end="url(#ah2)"/>
+
+        <path class="ar" d="M780,308 L780,479 L616,479" marker-end="url(#ah2)"/>
+        <rect class="bx y" x="290" y="452" width="326" height="56" rx="13"/>
+        <text class="t" x="450" y="478" text-anchor="middle">兩種獎金一併結算發放</text>
+        <text class="m" x="450" y="498" text-anchor="middle">2027/1/15 結算　→　2027/2/15 發放</text>
+
+        <path class="ar" d="M592,132 L770,132 L770,206" marker-end="url(#ah2)" stroke-dasharray="5 4"/>
+        <text class="lb" x="700" y="122" text-anchor="middle">達標後另計</text>
+        <rect class="bx y" x="690" y="212" width="180" height="96" rx="13"/>
+        <text class="t" x="780" y="238" text-anchor="middle">② 團體競賽獎金</text>
+        <text class="s" x="780" y="258" text-anchor="middle">達標院所依達成率排名</text>
+        <text class="m" x="780" y="278" text-anchor="middle">$10,000／8,000／5,000</text>
+        <text class="s" x="780" y="298" text-anchor="middle">院長自由分配</text>
+      </svg>
+    </div>
+    <p style="color:var(--ink-faint);font-size:13.5px;margin-top:6px">團體競賽獎金與方案獎金同為 2027/1/15 結算、2027/2/15 發放。總院無達標門檻，按件計酬自第 1 件起算，分配比例同樣適用 70／30。醫師 70% 依 NX 系統紀錄認定、不入分配池；團體競賽獎金不適用 70／30 比例。如有退費、作廢、修正，得於更正後重新計算。</p>
+  </div>
+
+  <div class="block result">
+    <h2>各院獎金試算（以剛好達成目標估算）</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>院別</th><th class="n">Q4 目標</th><th class="n">方案獎金合計</th><th class="n">醫師 70%</th><th class="n">助理＋櫃檯 30%</th></tr></thead>
+        <tbody>
+          <tr><td>苗栗縣府</td><td class="n">50</td><td class="n">$14,700</td><td class="n">$10,290</td><td class="n">$4,410</td></tr>
+          <tr><td>北屯</td><td class="n">49</td><td class="n">$14,406</td><td class="n">$10,084</td><td class="n">$4,322</td></tr>
+          <tr><td>曼哈頓</td><td class="n">48</td><td class="n">$14,112</td><td class="n">$9,878</td><td class="n">$4,234</td></tr>
+          <tr><td>仁德</td><td class="n">48</td><td class="n">$14,112</td><td class="n">$9,878</td><td class="n">$4,234</td></tr>
+          <tr><td>中華</td><td class="n">43</td><td class="n">$12,642</td><td class="n">$8,849</td><td class="n">$3,793</td></tr>
+          <tr><td>高雄</td><td class="n">39</td><td class="n">$11,466</td><td class="n">$8,026</td><td class="n">$3,440</td></tr>
+          <tr><td>九如</td><td class="n">28</td><td class="n">$8,232</td><td class="n">$5,762</td><td class="n">$2,470</td></tr>
+          <tr><td>西門院</td><td class="n">25</td><td class="n">$7,350</td><td class="n">$5,145</td><td class="n">$2,205</td></tr>
+          <tr><td>大灣</td><td class="n">22</td><td class="n">$6,468</td><td class="n">$4,528</td><td class="n">$1,940</td></tr>
+          <tr><td>彰化中山</td><td class="n">10</td><td class="n">$2,940</td><td class="n">$2,058</td><td class="n">$882</td></tr>
+          <tr class="sum"><td>合計</td><td class="n">362</td><td class="n">$106,428</td><td class="n">$74,498</td><td class="n">$31,930</td></tr>
+        </tbody>
+      </table>
+      <caption>試算，以 A：B ＝ 53：47 的件數結構（Q3 分院實際結構）估算，平均每件獎金 $294。按件計酬無上限，超標後實際發放金額會高於上表。團體競賽獎金 $23,000 未計入。</caption>
+    </div>
+  </div>
+
+  <div class="seg detail"><span>細節</span></div>
+
+  <div class="block">
+    <h2>分配規則與角色職責</h2>
+    <p class="lede">Q3 的分配比例由各院自行決定，第一線不知道自己做一件能拿多少。本季把下限寫進辦法，<b>總預算不變</b>，只是讓誘因看得見、算得出來。</p>
+    <div class="two">
+      <div class="card">
+        <h5>醫師 70%｜歸個人</h5>
+        <ul>
+          <li>歸該筆案件的執行醫師，依 NX 紀錄認定</li>
+          <li>不入池、院長不得調整或挪用</li>
+          <li>職責涵蓋理學檢查與採血、保定、判讀、提出加購建議、向飼主說明醫療意義</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h5>助理＋櫃檯 30%｜院長自由分配</h5>
+        <ul>
+          <li>併入院級分配池，由院長依實際參與度分配</li>
+          <li>不分助理、櫃檯兩池，亦不依角色訂定個別比例</li>
+          <li>櫃檯負責宣傳、預約建檔、券務核銷與結帳前三方檢核；助理負責保定、檢體處理與送檢、報價確認</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:14px"><b>總院同樣適用。</b>個人業績制不變，惟醫師領取 70% 份額，其餘 30% 比照分院併入團隊池，同樣由院長自由分配；總院兩角色雖為分設編制，仍同列一池、不另訂角色比例。</p>
+  </div>
+
+</section>
+
+<footer>
+  慈愛動物醫院　2026 冬季健檢專案（Q4）· 主管月會院長版<br>
+  本頁件數與金額均為試算，最終以結算系統資料為準。內容若與體系最新公告不符，以公告為準；院方保留解釋及調整之權利。
+</footer>
+</div>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll('.tabs button');
+  var panels=document.querySelectorAll('.panel');
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      btns.forEach(function(x){x.setAttribute('aria-selected','false')});
+      panels.forEach(function(p){p.classList.remove('on')});
+      b.setAttribute('aria-selected','true');
+      document.getElementById(b.dataset.p).classList.add('on');
+      window.scrollTo({top:0,behavior:'instant'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
